@@ -9,7 +9,7 @@ public class LISTFileFormater implements FileFormater {
 
 	private static final char DELIM = ' ';
 
-	private static final char[] NEWLINE = { '\n' }; // LF, instead of CR LF
+	private static final char[] NEWLINE = { '\r', '\n' };
 
 	public String format(FtpFile file) {
 		StringBuilder sb = new StringBuilder();
@@ -24,7 +24,6 @@ public class LISTFileFormater implements FileFormater {
 		sb.append(getLength(file)); // left-pad to 10 digits, instead of 12
 		sb.append(DELIM);
 		sb.append(getLastModified(file));
-		sb.append(DELIM); // 2 spaces in front of name, instead of 1
 		sb.append(DELIM);
 		sb.append(file.getName());
 		sb.append(NEWLINE);
